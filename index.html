@@ -12,6 +12,9 @@
       --zwart: #0a0a0a;
       --wit: #ffffff;
       --grijs: #f4f4f2;
+      --grijs-donker: #111111;
+      --input-bg: #181818;
+      --input-border: #333333;
       --tekst: #1a1a1a;
       --subtitel: #888;
     }
@@ -451,43 +454,88 @@
     .bestel-steps {
       display: flex;
       flex-direction: column;
-      gap: 24px;
+      align-items: flex-end;
+      width: 100%;
     }
 
-    .step {
-      display: flex;
-      align-items: flex-start;
-      gap: 20px;
+    .bestel-card {
+      background: var(--grijs-donker);
+      border-radius: 10px;
+      border: 1px solid #222;
+      padding: 22px 20px 20px;
+      width: 100%;
+      max-width: 420px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.4);
     }
 
-    .step-num {
-      width: 40px;
-      height: 40px;
-      background: var(--oranje);
-      color: var(--wit);
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 900;
-      font-size: 1.1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .step-text h4 {
+    .bestel-card-title {
+      color: #fff;
       font-family: 'Barlow Condensed', sans-serif;
       font-weight: 700;
-      font-size: 1rem;
+      font-size: 1.1rem;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--wit);
-      letter-spacing: 0.06em;
-      margin-bottom: 4px;
+      margin-bottom: 14px;
     }
 
-    .step-text p {
-      font-size: 0.875rem;
-      color: #666;
+    .form-row {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+
+    .form-label {
+      color: #f0f0f0;
+      font-size: 0.85rem;
+    }
+
+    .form-input,
+    .form-select {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 6px;
+      border: 1px solid var(--input-border);
+      background: var(--input-bg);
+      color: #f9f9f9;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+    }
+
+    .form-input::placeholder {
+      color: #777;
+    }
+
+    .form-input:focus,
+    .form-select:focus {
+      border-color: var(--oranje);
+      box-shadow: 0 0 0 1px rgba(255,85,0,0.6);
+      background: #1e1e1e;
+    }
+
+    .form-row-inline {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .form-row-inline .form-row {
+      flex: 1;
       margin-bottom: 0;
+    }
+
+    .form-help {
+      color: #777;
+      font-size: 0.8rem;
+      margin-top: 2px;
+    }
+
+    .form-status {
+      color: #aaa;
+      font-size: 0.8rem;
+      margin-top: 8px;
+      min-height: 1.2em;
     }
 
     footer {
@@ -538,7 +586,8 @@
       .features { grid-template-columns: 1fr 1fr; }
       .shirts-grid { grid-template-columns: 1fr; }
       .bestel-section { grid-template-columns: 1fr; padding: 60px 24px; gap: 40px; }
-      footer { flex-direction: column; gap: 16px; text-align: center; padding: 32px 24px; }
+      .bestel-steps { align-items: stretch; }
+      footer { flex-direction: column; gap: 16px; text-align:center; padding: 32px 24px; }
       footer nav { margin-top: 8px; }
     }
   </style>
@@ -675,45 +724,50 @@
     </div>
 
     <div class="bestel-steps">
-      <form id="bestel-form" method="POST" action="https://formspree.io/f/xbdpjozq">
-        <div class="step">
-          <div class="step-num">1</div>
-          <div class="step-text" style="width:100%;">
-            <h4>Jouw bestelling</h4>
+      <div class="bestel-card">
+        <div class="bestel-card-title">Bestel je shirt</div>
 
-            <label for="naam" style="color:#fff;font-size:0.9rem;">Naam</label>
-            <input id="naam" name="naam" type="text" required
-                   style="width:100%;margin:4px 0 12px;padding:8px 10px;border:none;border-radius:2px;">
-
-            <label for="adres" style="color:#fff;font-size:0.9rem;">Adres</label>
-            <input id="adres" name="adres" type="text" required
-                   style="width:100%;margin:4px 0 12px;padding:8px 10px;border:none;border-radius:2px;">
-
-            <label for="postcode" style="color:#fff;font-size:0.9rem;">Postcode + woonplaats</label>
-            <input id="postcode" name="postcode" type="text" required
-                   style="width:100%;margin:4px 0 12px;padding:8px 10px;border:none;border-radius:2px;">
-
-            <label for="maat" style="color:#fff;font-size:0.9rem;">Maat</label>
-            <input id="maat" name="maat" type="text" placeholder="Bijv. S, M, L, XL" required
-                   style="width:100%;margin:4px 0 12px;padding:8px 10px;border:none;border-radius:2px;">
-
-            <label for="shirt" style="color:#fff;font-size:0.9rem;">Shirt</label>
-            <select id="shirt" name="shirt" required
-                    style="width:100%;margin:4px 0 20px;padding:8px 10px;border:none;border-radius:2px;">
-              <option value="Thuisshirt">Thuisshirt</option>
-              <option value="Uitshirt">Uitshirt</option>
-            </select>
-
-            <input type="hidden" name="_subject" value="Nieuwe bestelling voetbalshirt">
-
-            <button type="submit" class="btn-primary" style="border:none;cursor:pointer;">
-              Verstuur bestelling
-            </button>
-
-            <p id="form-status" style="color:#aaa;font-size:0.8rem;margin-top:10px;"></p>
+        <form id="bestel-form" method="POST" action="https://formspree.io/f/xbdpjozq">
+          <div class="form-row">
+            <label for="naam" class="form-label">Naam</label>
+            <input id="naam" name="naam" type="text" required class="form-input" placeholder="Voor- en achternaam">
           </div>
-        </div>
-      </form>
+
+          <div class="form-row">
+            <label for="adres" class="form-label">Adres</label>
+            <input id="adres" name="adres" type="text" required class="form-input" placeholder="Straat + huisnummer">
+          </div>
+
+          <div class="form-row">
+            <label for="postcode" class="form-label">Postcode + woonplaats</label>
+            <input id="postcode" name="postcode" type="text" required class="form-input" placeholder="Bijv. 1234AB Amsterdam">
+          </div>
+
+          <div class="form-row-inline">
+            <div class="form-row">
+              <label for="maat" class="form-label">Maat</label>
+              <input id="maat" name="maat" type="text" required class="form-input" placeholder="S, M, L, XL">
+            </div>
+            <div class="form-row">
+              <label for="shirt" class="form-label">Shirt</label>
+              <select id="shirt" name="shirt" required class="form-select">
+                <option value="Thuisshirt">Thuisshirt</option>
+                <option value="Uitshirt">Uitshirt</option>
+              </select>
+            </div>
+          </div>
+
+          <p class="form-help">Prijs per shirt: €24,99 – je betaalt veilig via Tikkie na het versturen.</p>
+
+          <input type="hidden" name="_subject" value="Nieuwe bestelling voetbalshirt">
+
+          <button type="submit" class="btn-primary" style="border:none;cursor:pointer;width:100%;text-align:center;margin-top:10px;">
+            Verstuur bestelling & betaal
+          </button>
+
+          <p id="form-status" class="form-status"></p>
+        </form>
+      </div>
     </div>
   </section>
 
@@ -742,8 +796,10 @@
         headers: { 'Accept': 'application/json' }
       }).then(response => {
         if (response.ok) {
-          statusEl.textContent = 'Bedankt! Je bestelling is verstuurd.';
-          form.reset();
+          statusEl.textContent = 'Bestelling ontvangen, je wordt doorgestuurd naar de betaalpagina...';
+          setTimeout(function () {
+            window.location.href = 'https://tikkie.me/pay/gi6odn2ep768og3bt7uv';
+          }, 1200);
         } else {
           statusEl.textContent = 'Er ging iets mis. Probeer het later opnieuw.';
         }
