@@ -109,6 +109,24 @@
       transform: translateY(-1px);
     }
 
+    .whatsapp-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #25D366;
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+    }
+    .whatsapp-icon:hover {
+      background: #1da851;
+    }
+
     .hero {
       min-height: 100vh;
       display: grid;
@@ -427,7 +445,7 @@
       color: #aaa;
       font-size: 1rem;
       line-height: 1.7;
-      margin-bottom: 36px;
+      margin-bottom: 18px;
     }
 
     .bestel-steps {
@@ -492,7 +510,7 @@
       font-size: 0.8rem;
       color: #555;
       text-decoration: none;
-      margin-left: 28px;
+      margin-left: 20px;
       transition: color 0.2s;
     }
     footer nav a:hover { color: var(--oranje); }
@@ -534,7 +552,10 @@
       <li><a href="#bestellen">Bestellen</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <a href="https://wa.me/31630576584" class="btn-primary">WhatsApp</a>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <a href="https://wa.me/31630576584" class="btn-primary">WhatsApp</a>
+      <a href="https://wa.me/31630576584" class="whatsapp-icon" aria-label="WhatsApp contact">W</a>
+    </div>
   </nav>
 
   <section class="hero">
@@ -644,16 +665,17 @@
     </div>
   </section>
 
-  <!-- BESTELFORMULIER VIA FORMSPREE -->
   <section class="bestel-section" id="bestellen">
     <div>
       <h2>ZO SIMPEL<br>BESTEL JE BIJ<br><span>ONS</span></h2>
       <p>Vul je gegevens in. De bestelling wordt direct vanaf de website naar ons gemaild, wij reageren zo snel mogelijk.</p>
-      <p style="color:#888;font-size:0.9rem;">Liever direct contact? Stuur een bericht via <a href="https://wa.me/31630576584" style="color:#FF5500;text-decoration:none;">WhatsApp</a>.</p>
+      <p style="color:#888;font-size:0.9rem;">Liever direct contact? Stuur een bericht via
+        <a href="https://wa.me/31630576584" style="color:#FF5500;text-decoration:none;">WhatsApp</a>.
+      </p>
     </div>
 
     <div class="bestel-steps">
-      <form id="bestel-form" method="POST" action="https://formspree.io/f/JOUW-ENDPOINT">
+      <form id="bestel-form" method="POST" action="https://formspree.io/f/xbdpjozq">
         <div class="step">
           <div class="step-num">1</div>
           <div class="step-text" style="width:100%;">
@@ -683,7 +705,6 @@
             </select>
 
             <input type="hidden" name="_subject" value="Nieuwe bestelling voetbalshirt">
-            <input type="hidden" name="_replyto" value="">
 
             <button type="submit" class="btn-primary" style="border:none;cursor:pointer;">
               Verstuur bestelling
@@ -703,7 +724,7 @@
       <a href="#shirts">Shirts</a>
       <a href="#bestellen">Bestellen</a>
       <a href="mailto:stan-zakelijk@hotmail.com">E-mail</a>
-      <a href="https://wa.me/31630576584">WhatsApp</a>
+      <a href="https://wa.me/31630576584" class="whatsapp-icon" aria-label="WhatsApp contact">W</a>
     </nav>
   </footer>
 
