@@ -6,45 +6,131 @@
   <title>Bestellen – Fan-versie shirt 2026</title>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet"/>
   <style>
-    body { font-family: 'Barlow', sans-serif; margin:0; background:#fff5ec; color:#1a1a1a; }
-    nav {
-      position: fixed; top:0; left:0; right:0; height:68px;
-      display:flex; align-items:center; justify-content:space-between;
-      padding:0 48px; background:rgba(255,255,255,0.96); border-bottom:1px solid #eee;
+    :root {
+      --oranje: #FF5500;
+      --oranje-donker: #cc4400;
+      --zwart: #0a0a0a;
+      --wit: #ffffff;
+      --achtergrond: #fff5ec;
+      --kaart-rand: #e5e2dc;
+      --tekst: #1a1a1a;
     }
-    .logo { font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:1.45rem; letter-spacing:-0.5px; text-decoration:none; color:#0a0a0a; }
-    .logo span { color:#FF5500; }
+
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    body {
+      font-family:'Barlow',sans-serif;
+      background:var(--achtergrond);
+      color:var(--tekst);
+    }
+
+    nav {
+      position:fixed; top:0; left:0; right:0; height:68px;
+      display:flex; align-items:center; justify-content:space-between;
+      padding:0 48px;
+      background:rgba(255,255,255,0.96);
+      border-bottom:1px solid #eee;
+      z-index:100;
+    }
+    .logo {
+      font-family:'Barlow Condensed',sans-serif;
+      font-weight:900; font-size:1.45rem;
+      letter-spacing:-0.5px; text-decoration:none; color:var(--zwart);
+    }
+    .logo span { color:var(--oranje); }
     .nav-links { list-style:none; display:flex; gap:36px; }
-    .nav-links a { text-decoration:none; font-size:0.875rem; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:#1a1a1a; }
-    .nav-links a:hover { color:#FF5500; }
+    .nav-links a {
+      font-size:0.875rem; font-weight:600; letter-spacing:0.06em;
+      text-transform:uppercase; text-decoration:none; color:var(--tekst);
+    }
+    .nav-links a:hover { color:var(--oranje); }
+
     .btn-primary {
-      background:#FF5500; color:#fff; font-family:'Barlow Condensed',sans-serif;
-      font-weight:700; font-size:1rem; letter-spacing:0.08em; text-transform:uppercase;
-      border:none; padding:12px 28px; cursor:pointer; text-decoration:none;
+      background:var(--oranje); color:var(--wit);
+      font-family:'Barlow Condensed',sans-serif;
+      font-weight:700; font-size:1rem;
+      letter-spacing:0.08em; text-transform:uppercase;
+      border:none; padding:10px 24px;
+      cursor:pointer; text-decoration:none;
       clip-path:polygon(0 0, calc(100% - 10px) 0, 100% 100%, 10px 100%);
     }
-    main { max-width:960px; margin:100px auto 40px; padding:0 24px; }
-    h1 { font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:3rem; text-transform:uppercase; letter-spacing:-1px; margin-bottom:8px; }
-    h1 span { color:#FF5500; }
-    p { margin-bottom:14px; color:#555; }
-    .bestel-card {
-      background:#ffffff; border-radius:12px; border:1px solid #e5e2dc;
-      padding:22px 20px 20px; box-shadow:0 16px 40px rgba(0,0,0,0.06); max-width:480px;
+    .btn-primary:hover { background:var(--oranje-donker); }
+
+    main {
+      max-width:960px;
+      margin:110px auto 60px;
+      padding:0 24px;
     }
+
+    .badge {
+      display:inline-block;
+      font-family:'Barlow Condensed',sans-serif;
+      font-size:0.75rem; font-weight:700;
+      letter-spacing:0.18em; text-transform:uppercase;
+      color:var(--oranje);
+      border:1.5px solid var(--oranje);
+      padding:5px 14px;
+      margin-bottom:18px;
+    }
+
+    h1 {
+      font-family:'Barlow Condensed',sans-serif;
+      font-weight:900; font-size:clamp(2.8rem,5vw,3.6rem);
+      text-transform:uppercase; letter-spacing:-1px;
+      margin-bottom:6px;
+    }
+    h1 span { color:var(--oranje); }
+    .intro {
+      max-width:620px;
+      font-size:1rem;
+      color:#555;
+      margin-bottom:28px;
+      line-height:1.7;
+    }
+
+    .bestel-layout {
+      display:flex;
+      justify-content:flex-start;
+    }
+
+    .bestel-card {
+      background:var(--wit);
+      border-radius:12px;
+      border:1px solid var(--kaart-rand);
+      padding:22px 20px 20px;
+      box-shadow:0 16px 40px rgba(0,0,0,0.06);
+      max-width:480px;
+      width:100%;
+    }
+
     .bestel-card-title {
-      font-family:'Barlow Condensed',sans-serif; font-weight:700;
-      font-size:1.1rem; letter-spacing:0.08em; text-transform:uppercase;
+      font-family:'Barlow Condensed',sans-serif;
+      font-weight:700; font-size:1.1rem;
+      letter-spacing:0.08em; text-transform:uppercase;
       margin-bottom:14px; color:#222;
     }
-    .form-row { display:flex; flex-direction:column; gap:6px; margin-bottom:10px; }
+
+    .form-row {
+      display:flex; flex-direction:column;
+      gap:6px; margin-bottom:10px;
+    }
     .form-label { font-size:0.85rem; color:#444; }
     .form-input, .form-select {
-      width:100%; padding:10px 12px; border-radius:6px;
-      border:1px solid #d6d3ce; font-size:0.95rem;
+      width:100%;
+      padding:10px 12px;
+      border-radius:6px;
+      border:1px solid #d6d3ce;
+      font-size:0.95rem;
     }
+    .form-input::placeholder { color:#a5a29b; }
+
     .form-help { font-size:0.8rem; color:#777; margin-top:2px; }
     .form-status { font-size:0.8rem; color:#777; margin-top:8px; min-height:1.2em; }
-    @media(max-width:900px){ nav{padding:0 24px;} }
+
+    @media(max-width:900px){
+      nav{padding:0 24px;}
+      main{margin-top:96px;}
+      .bestel-layout{flex-direction:column;}
+    }
   </style>
 </head>
 <body>
@@ -61,51 +147,57 @@
   </nav>
 
   <main>
-    <h1>Bestel jouw <span>Fan-versie shirt 2026</span></h1>
-    <p>Vul hieronder je gegevens in. Na je bestelling ontvang je van ons een betaalverzoek en bevestiging via WhatsApp of e‑mail.</p>
+    <div class="badge">Bestellen</div>
+    <h1>Bestel jouw <span>fan-versie shirt 2026</span></h1>
+    <p class="intro">
+      Vul hieronder je gegevens in. Na je bestelling ontvang je van ons een betaalverzoek
+      en bevestiging via WhatsApp of e‑mail.
+    </p>
 
-    <div class="bestel-card">
-      <div class="bestel-card-title">Bestelformulier</div>
+    <div class="bestel-layout">
+      <div class="bestel-card">
+        <div class="bestel-card-title">Bestelformulier</div>
 
-      <form id="bestel-form" method="POST" action="https://formspree.io/f/xbdpjozq">
-        <div class="form-row">
-          <label for="naam" class="form-label">Naam</label>
-          <input id="naam" name="naam" type="text" required class="form-input" placeholder="Voor- en achternaam">
-        </div>
+        <form id="bestel-form" method="POST" action="https://formspree.io/f/xbdpjozq">
+          <div class="form-row">
+            <label for="naam" class="form-label">Naam</label>
+            <input id="naam" name="naam" type="text" required class="form-input" placeholder="Voor- en achternaam">
+          </div>
 
-        <div class="form-row">
-          <label for="adres" class="form-label">Adres</label>
-          <input id="adres" name="adres" type="text" required class="form-input" placeholder="Straat + huisnummer">
-        </div>
+          <div class="form-row">
+            <label for="adres" class="form-label">Adres</label>
+            <input id="adres" name="adres" type="text" required class="form-input" placeholder="Straat + huisnummer">
+          </div>
 
-        <div class="form-row">
-          <label for="postcode" class="form-label">Postcode + woonplaats</label>
-          <input id="postcode" name="postcode" type="text" required class="form-input" placeholder="Bijv. 1234AB Amsterdam">
-        </div>
+          <div class="form-row">
+            <label for="postcode" class="form-label">Postcode + woonplaats</label>
+            <input id="postcode" name="postcode" type="text" required class="form-input" placeholder="Bijv. 1234AB Amsterdam">
+          </div>
 
-        <div class="form-row">
-          <label for="maat" class="form-label">Maat</label>
-          <input id="maat" name="maat" type="text" required class="form-input" placeholder="S, M, L, XL">
-        </div>
+          <div class="form-row">
+            <label for="maat" class="form-label">Maat</label>
+            <input id="maat" name="maat" type="text" required class="form-input" placeholder="S, M, L, XL">
+          </div>
 
-        <div class="form-row">
-          <label for="shirt" class="form-label">Shirt</label>
-          <select id="shirt" name="shirt" required class="form-select">
-            <option value="Fan-versie thuisshirt 2026">Fan-versie thuisshirt 2026</option>
-            <option value="Fan-versie uitshirt 2026">Fan-versie uitshirt 2026</option>
-          </select>
-        </div>
+          <div class="form-row">
+            <label for="shirt" class="form-label">Shirt</label>
+            <select id="shirt" name="shirt" required class="form-select">
+              <option value="Fan-versie thuisshirt 2026">Fan-versie thuisshirt 2026</option>
+              <option value="Fan-versie uitshirt 2026">Fan-versie uitshirt 2026</option>
+            </select>
+          </div>
 
-        <p class="form-help">Prijs per fan-versie shirt: €24,99 – na het versturen betaal je veilig via Tikkie.</p>
+          <p class="form-help">Prijs per fan-versie shirt: €24,99 – na het versturen betaal je veilig via Tikkie.</p>
 
-        <input type="hidden" name="_subject" value="Nieuwe bestelling fan-versie shirt 2026">
+          <input type="hidden" name="_subject" value="Nieuwe bestelling fan-versie shirt 2026">
 
-        <button type="submit" class="btn-primary" style="width:100%; text-align:center; margin-top:10px;">
-          Verstuur bestelling & betaal
-        </button>
+          <button type="submit" class="btn-primary" style="width:100%; text-align:center; margin-top:10px;">
+            Verstuur bestelling & betaal
+          </button>
 
-        <p id="form-status" class="form-status"></p>
-      </form>
+          <p id="form-status" class="form-status"></p>
+        </form>
+      </div>
     </div>
   </main>
 
