@@ -11,343 +11,178 @@
       --oranje-donker: #cc4400;
       --zwart: #0a0a0a;
       --wit: #ffffff;
-      --grijs: #f4f4f2;
-      --grijs-licht: #faf9f7;
+      --achtergrond: #fff5ec;
+      --kaart-rand: #e5e2dc;
       --tekst: #1a1a1a;
     }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
 
     body {
-      font-family: 'Barlow', sans-serif;
-      background: var(--wit);
-      color: var(--tekst);
-      overflow-x: hidden;
+      font-family:'Barlow',sans-serif;
+      background:var(--achtergrond);
+      color:var(--tekst);
     }
 
+    /* BOVENSTE LINT – ALLEEN LOGO-LINK */
     nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 48px;
-      height: 68px;
-      background: rgba(255,255,255,0.96);
-      border-bottom: 1px solid #eee;
+      position:fixed; top:0; left:0; right:0; height:68px;
+      display:flex; align-items:center;
+      padding:0 32px;
+      background:rgba(255,255,255,0.96);
+      border-bottom:1px solid #eee;
+      z-index:100;
     }
-
     .logo {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 900;
-      font-size: 1.45rem;
-      letter-spacing: -0.5px;
-      text-decoration: none;
-      color: var(--zwart);
+      font-family:'Barlow Condensed',sans-serif;
+      font-weight:900; font-size:1.6rem;
+      letter-spacing:-0.5px; text-decoration:none; color:var(--zwart);
     }
-    .logo span { color: var(--oranje); }
+    .logo span { color:var(--oranje); }
 
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 36px;
-    }
-    .nav-links a {
-      font-size: 0.875rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      text-decoration: none;
-      color: var(--tekst);
-    }
-    .nav-links a:hover { color: var(--oranje); }
-
-    .btn-primary {
-      background: var(--oranje);
-      color: var(--wit);
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700;
-      font-size: 1rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      border: none;
-      padding: 12px 28px;
-      cursor: pointer;
-      text-decoration: none;
-      clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 100%, 10px 100%);
-    }
-    .btn-primary:hover { background: var(--oranje-donker); }
-
-    .btn-secondary {
-      background: transparent;
-      color: var(--tekst);
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700;
-      font-size: 1rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      border: 2px solid var(--tekst);
-      padding: 12px 28px;
-      cursor: pointer;
-      text-decoration: none;
-      clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 100%, 10px 100%);
-    }
-    .btn-secondary:hover { background: var(--tekst); color: var(--wit); }
-
-    .whatsapp-icon {
-      width: 32px; height: 32px; border-radius: 50%;
-      background: #25D366; color: #fff;
-      display: inline-flex; align-items: center; justify-content: center;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700; font-size: 1rem;
-      text-decoration: none;
+    main {
+      padding:96px 16px 40px; /* ruimte voor navbar */
     }
 
     .hero {
-      min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      padding: 100px 48px 60px;
+      max-width:960px;
+      margin:0 auto 48px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:32px;
+      align-items:center;
     }
 
-    .hero-badge {
-      display: inline-block;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--oranje);
-      border: 1.5px solid var(--oranje);
-      padding: 5px 14px;
-      margin-bottom: 28px;
+    .hero-text {
+      flex:1 1 320px;
     }
 
-    .hero h1 {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 900;
-      font-size: clamp(4rem, 8vw, 7.5rem);
-      line-height: 0.92;
-      text-transform: uppercase;
-      letter-spacing: -2px;
-      margin-bottom: 32px;
-    }
-    .hero h1 .accent { color: var(--oranje); }
-
-    .hero p {
-      font-size: 1.1rem;
-      line-height: 1.65;
-      color: #555;
-      max-width: 440px;
+    .badge {
+      display:inline-block;
+      font-family:'Barlow Condensed',sans-serif;
+      font-size:0.75rem; font-weight:700;
+      letter-spacing:0.18em; text-transform:uppercase;
+      color:var(--oranje);
+      border:1.5px solid var(--oranje);
+      padding:5px 14px;
+      margin-bottom:18px;
     }
 
-    .hero-cta {
-      display: flex;
-      gap: 16px;
-      margin-top: 16px;
+    h1 {
+      font-family:'Barlow Condensed',sans-serif;
+      font-weight:900;
+      font-size:clamp(2.8rem, 5vw, 3.6rem);
+      text-transform:uppercase;
+      letter-spacing:-1px;
+      margin-bottom:10px;
+    }
+    h1 span { color:var(--oranje); }
+
+    .hero-sub {
+      font-size:1rem;
+      color:#555;
+      max-width:520px;
+      line-height:1.7;
+      margin-bottom:22px;
     }
 
-    .hero-visual {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      padding-left: 32px;
+    .hero-actions {
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      align-items:center;
     }
 
-    .shirt-card {
-      background: #1a1a1a;
-      border-radius: 4px;
-      overflow: hidden;
-      position: relative;
-      aspect-ratio: 4 / 3;
+    .btn-primary {
+      background:var(--oranje);
+      color:var(--wit);
+      font-family:'Barlow Condensed',sans-serif;
+      font-weight:700;
+      font-size:1rem;
+      letter-spacing:0.08em;
+      text-transform:uppercase;
+      border:none;
+      padding:11px 26px;
+      cursor:pointer;
+      text-decoration:none;
+      clip-path:polygon(0 0, calc(100% - 10px) 0, 100% 100%, 10px 100%);
     }
-    .shirt-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-    .shirt-label {
-      position: absolute;
-      bottom: 12px; left: 12px;
-      background: var(--oranje); color: #fff;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700;
-      font-size: 0.7rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 4px 10px;
+    .btn-primary:hover { background:var(--oranje-donker); }
+
+    .hero-note {
+      font-size:0.85rem;
+      color:#777;
     }
 
-    .ticker {
-      background: var(--oranje);
-      padding: 14px 0;
-      overflow: hidden;
-      white-space: nowrap;
+    .hero-image {
+      flex:1 1 280px;
+      text-align:center;
     }
-    .ticker-inner {
-      display: inline-flex;
-      animation: ticker 22s linear infinite;
-    }
-    .ticker-item {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700;
-      font-size: 0.85rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: #fff;
-      padding: 0 40px;
-    }
-    .ticker-item::before {
-      content: '◆';
-      margin-right: 40px;
-      opacity: 0.6;
+    .hero-image img {
+      max-width:100%;
+      height:auto;
+      border-radius:12px;
+      box-shadow:0 20px 45px rgba(0,0,0,0.18);
     }
 
-    .features {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      border-top: 1px solid #eee;
-      border-bottom: 1px solid #eee;
-      background: var(--grijs-licht);
-    }
-    .feature {
-      padding: 32px 28px;
-      border-right: 1px solid #eee;
-    }
-    .feature:last-child { border-right: none; }
-    .feature h3 {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700;
-      font-size: 1.1rem;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin-bottom: 6px;
-    }
-    .feature p {
-      font-size: 0.9rem;
-      color: #777;
-    }
-
-    .shirts-section {
-      padding: 100px 48px;
-      background: var(--grijs-licht);
-    }
-    .section-header { margin-bottom: 56px; }
-    .section-label {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--oranje);
-      margin-bottom: 10px;
+    /* SHIRTS-SECTIE */
+    #shirts {
+      max-width:960px;
+      margin:0 auto 40px;
     }
     .section-title {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 900;
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      text-transform: uppercase;
-      letter-spacing: -1px;
+      font-family:'Barlow Condensed',sans-serif;
+      font-weight:800;
+      font-size:1.6rem;
+      text-transform:uppercase;
+      letter-spacing:0.08em;
+      margin-bottom:18px;
     }
-
     .shirts-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:20px;
     }
-    .product-card {
-      background: #ffffff;
-      border-radius: 8px;
-      border: 1px solid #e5e2dc;
-      overflow: hidden;
+    .shirt-card {
+      background:var(--wit);
+      border-radius:12px;
+      border:1px solid var(--kaart-rand);
+      padding:14px 14px 16px;
+      box-shadow:0 10px 28px rgba(0,0,0,0.06);
     }
-    .product-img {
-      background: #1f1f1f;
-      height: 260px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
+    .shirt-title {
+      font-family:'Barlow Condensed',sans-serif;
+      font-weight:700;
+      font-size:1.2rem;
+      text-transform:uppercase;
+      margin-bottom:6px;
     }
-    .product-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
+    .shirt-meta {
+      font-size:0.85rem;
+      color:#777;
+      margin-bottom:6px;
     }
-    .product-badge {
-      position: absolute;
-      top: 16px; right: 16px;
-      background: var(--oranje); color: #fff;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700;
-      font-size: 0.7rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 5px 12px;
+    .shirt-price {
+      font-weight:700;
+      margin-bottom:8px;
     }
-    .product-info { padding: 24px; }
-    .product-info h3 {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700;
-      font-size: 1.25rem;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      margin-bottom: 4px;
-    }
-    .product-info .sub {
-      font-size: 0.825rem;
-      color: #888;
-      margin-bottom: 16px;
-    }
-    .product-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .price {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 900;
-      font-size: 1.5rem;
-      color: var(--oranje);
+    .shirt-card .btn-primary {
+      font-size:0.9rem;
+      padding:9px 18px;
     }
 
+    /* FOOTER ZONDER EMAIL/WHATSAPP BLOK */
     footer {
-      background: #0a0a0a;
-      border-top: 1px solid #1f1f1f;
-      padding: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    footer .logo { color: #fff; }
-    footer p {
-      font-size: 0.8rem;
-      color: #555;
-    }
-    footer nav a {
-      font-size: 0.8rem;
-      color: #555;
-      text-decoration: none;
-      margin-left: 20px;
-    }
-    footer nav a:hover { color: var(--oranje); }
-
-    @keyframes ticker {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
+      text-align:center;
+      font-size:0.8rem;
+      color:#888;
+      padding:24px 16px 32px;
     }
 
-    @media (max-width: 900px) {
-      nav { padding: 0 24px; }
-      .nav-links { display: none; }
-      .hero { grid-template-columns: 1fr; padding: 100px 24px 60px; }
-      .hero-visual { display: none; }
-      .features { grid-template-columns: 1fr 1fr; }
-      .shirts-grid { grid-template-columns: 1fr; }
-      footer { flex-direction: column; gap: 16px; text-align: center; padding: 32px 24px; }
+    @media(max-width:800px){
+      nav{padding:0 20px;}
+      .hero{flex-direction:column;}
+      .hero-image{order:-1;}
     }
   </style>
 </head>
@@ -355,134 +190,50 @@
 
   <nav>
     <a class="logo" href="index.html">VOETBALSHIRTS<span>NL</span></a>
-    <ul class="nav-links">
-      <li><a href="#shirts">Shirts</a></li>
-      <li><a href="bestellen.html">Bestellen</a></li>
-      <li><a href="gripsokken.html">Gripsokken</a></li>
-      <li><a href="over-ons.html">Over ons</a></li>
-    </ul>
-    <a href="https://wa.me/31630576584" class="btn-primary">WhatsApp</a>
   </nav>
 
-  <section class="hero">
-    <div class="hero-content">
-      <div class="hero-badge">Nederland Collectie 2026</div>
-      <h1>
-        DRAAG<br>
-        <span class="accent">ORANJE</span><br>
-        MET TROTS
-      </h1>
-      <p>
-        Fan-versie shirts geïnspireerd op het Nederlands elftal. Thuisshirt en uitshirt 2026 nu beschikbaar.
-        Snel geleverd, scherpe prijs.
-      </p>
-      <p style="margin-top:10px; font-weight:600; color:#FF5500;">
-        Ook meer grip in je schoen? Bekijk onze
-        <a href="gripsokken.html" style="color:#FF5500; text-decoration:underline;">
-          gripsokken voor maar €2,99 per paar
-        </a>.
-      </p>
-      <div class="hero-cta">
-        <a href="bestellen.html" class="btn-primary">Bestel fan-versie</a>
-        <a href="https://wa.me/31630576584" class="btn-secondary">WhatsApp</a>
-      </div>
-    </div>
-
-    <div class="hero-visual">
-      <div class="shirt-card">
-        <img src="Oranje shirt.jpg" alt="Fan-versie thuisshirt Nederland 2026">
-        <div class="shirt-label">Fan-versie thuis 2026</div>
-      </div>
-      <div class="shirt-card">
-        <img src="wit shirt.jpg" alt="Fan-versie uitshirt Nederland 2026">
-        <div class="shirt-label">Fan-versie uit 2026</div>
-      </div>
-    </div>
-  </section>
-
-  <div class="ticker" aria-hidden="true">
-    <div class="ticker-inner">
-      <span class="ticker-item">Snelle levering</span>
-      <span class="ticker-item">Fan-versie shirts 2026</span>
-      <span class="ticker-item">Bestellen via WhatsApp</span>
-      <span class="ticker-item">Betalen via iDEAL of Tikkie</span>
-      <span class="ticker-item">Nederland 2026</span>
-      <span class="ticker-item">Gratis verzending</span>
-      <span class="ticker-item">Snelle levering</span>
-      <span class="ticker-item">Fan-versie shirts 2026</span>
-    </div>
-  </div>
-
-  <section class="features">
-    <div class="feature">
-      <h3>Snelle levering</h3>
-      <p>Je fan-versie shirt 2026 binnen 2–3 werkdagen thuis, mét track & trace.</p>
-    </div>
-    <div class="feature">
-      <h3>Bestellen zoals jij wilt</h3>
-      <p>Via de bestelpagina of direct via WhatsApp, wat jij het makkelijkst vindt.</p>
-    </div>
-    <div class="feature">
-      <h3>Fan-versie shirts</h3>
-      <p>Comfortabele fan-versie shirts om in te juichen, trainen of dagelijks te dragen.</p>
-    </div>
-    <div class="feature">
-      <h3>Betalen via iDEAL of Tikkie</h3>
-      <p>Altijd veilig en vertrouwd afrekenen met je eigen bankapp.</p>
-    </div>
-  </section>
-
-  <section class="shirts-section" id="shirts">
-    <div class="section-header">
-      <div>
-        <div class="section-label">Collectie 2026</div>
-        <h2 class="section-title">KIES JOUW<br>FAN-VERSIE SHIRT</h2>
-      </div>
-    </div>
-
-    <div class="shirts-grid">
-      <div class="product-card">
-        <div class="product-img">
-          <img src="Oranje shirt.jpg" alt="Fan-versie thuisshirt Nederland 2026">
-          <div class="product-badge">Fan-versie</div>
-        </div>
-        <div class="product-info">
-          <h3>Fan-versie thuisshirt</h3>
-          <p class="sub">Oranje — Nederland 2026</p>
-          <div class="product-footer">
-            <span class="price">€24,99</span>
-            <a href="bestellen.html" class="btn-primary" style="font-size:0.8rem; padding:10px 20px;">Bestel fan-versie</a>
-          </div>
+  <main>
+    <section class="hero">
+      <div class="hero-text">
+        <div class="badge">Oranje fan shirt</div>
+        <h1>Fan-versie <span>voetbalshirt 2026</span></h1>
+        <p class="hero-sub">
+          Scoor jouw fan-versie van het Nederlands elftal shirt voor het EK/WK 2026.
+          Gemaakt voor fans die er net zo strak bij willen lopen als de spelers.
+        </p>
+        <div class="hero-actions">
+          <a href="bestellen.html" class="btn-primary">Bestel nu je shirt</a>
+          <span class="hero-note">€24,99 per shirt, betalen via Tikkie.</span>
         </div>
       </div>
 
-      <div class="product-card">
-        <div class="product-img">
-          <img src="wit shirt.jpg" alt="Fan-versie uitshirt Nederland 2026">
-        </div>
-        <div class="product-info">
-          <h3>Fan-versie uitshirt</h3>
-          <p class="sub">Wit — Nederland 2026</p>
-          <div class="product-footer">
-            <span class="price">€24,99</span>
-            <a href="bestellen.html" class="btn-primary" style="font-size:0.8rem; padding:10px 20px;">Bestel fan-versie</a>
-          </div>
-        </div>
+      <div class="hero-image">
+        <img src="shirt-home-2026.jpg" alt="Fan-versie thuisshirt 2026">
       </div>
-    </div>
-  </section>
+    </section>
 
-  <footer id="contact">
-    <a class="logo" href="index.html">VOETBALSHIRTS<span>NL</span></a>
-    <p>© 2026 VoetbalshirtsNL. Alle rechten voorbehouden.</p>
-    <nav>
-      <a href="#shirts">Shirts</a>
-      <a href="bestellen.html">Bestellen</a>
-      <a href="gripsokken.html">Gripsokken</a>
-      <a href="over-ons.html">Over ons</a>
-      <a href="mailto:stan-zakelijk@hotmail.com">E-mail</a>
-      <a href="https://wa.me/31630576584" class="whatsapp-icon" aria-label="WhatsApp contact">W</a>
-    </nav>
+    <section id="shirts">
+      <h2 class="section-title">Onze shirts</h2>
+      <div class="shirts-grid">
+        <article class="shirt-card">
+          <h3 class="shirt-title">Fan-versie thuisshirt 2026</h3>
+          <p class="shirt-meta">Thuis | Oranje | Maat S t/m XL</p>
+          <p class="shirt-price">€24,99 per stuk</p>
+          <a href="bestellen.html" class="btn-primary">Bestel thuisshirt</a>
+        </article>
+
+        <article class="shirt-card">
+          <h3 class="shirt-title">Fan-versie uitshirt 2026</h3>
+          <p class="shirt-meta">Uit | Blauw/Wit | Maat S t/m XL</p>
+          <p class="shirt-price">€24,99 per stuk</p>
+          <a href="bestellen.html" class="btn-primary">Bestel uitshirt</a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 VoetbalshirtsNL. Alle rechten voorbehouden.
   </footer>
 
 </body>
