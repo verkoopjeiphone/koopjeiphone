@@ -47,7 +47,7 @@
     .btn-primary {
       background:var(--oranje); color:var(--wit);
       font-family:'Barlow Condensed',sans-serif;
-      font-weight:700; font-size:1rem;
+      font-weight:700; font-size:0.95rem;
       letter-spacing:0.08em; text-transform:uppercase;
       border:none; padding:10px 24px;
       cursor:pointer; text-decoration:none;
@@ -56,9 +56,17 @@
     .btn-primary:hover { background:var(--oranje-donker); }
 
     main {
-      max-width:960px;
-      margin:110px auto 60px;
-      padding:0 24px;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:96px 16px 40px; /* ruimte voor navbar */
+    }
+
+    .bestel-wrapper {
+      max-width:520px;
+      width:100%;
+      text-align:center;
     }
 
     .badge {
@@ -74,22 +82,18 @@
 
     h1 {
       font-family:'Barlow Condensed',sans-serif;
-      font-weight:900; font-size:clamp(2.8rem,5vw,3.6rem);
-      text-transform:uppercase; letter-spacing:-1px;
-      margin-bottom:6px;
+      font-weight:900; font-size:2.4rem;
+      text-transform:uppercase; letter-spacing:-0.5px;
+      margin-bottom:8px;
     }
     h1 span { color:var(--oranje); }
-    .intro {
-      max-width:620px;
-      font-size:1rem;
-      color:#555;
-      margin-bottom:28px;
-      line-height:1.7;
-    }
 
-    .bestel-layout {
-      display:flex;
-      justify-content:flex-start;
+    .intro {
+      font-size:0.98rem;
+      color:#555;
+      margin:0 auto 26px;
+      max-width:460px;
+      line-height:1.6;
     }
 
     .bestel-card {
@@ -98,38 +102,46 @@
       border:1px solid var(--kaart-rand);
       padding:22px 20px 20px;
       box-shadow:0 16px 40px rgba(0,0,0,0.06);
-      max-width:480px;
-      width:100%;
+      text-align:left;
     }
 
     .bestel-card-title {
       font-family:'Barlow Condensed',sans-serif;
-      font-weight:700; font-size:1.1rem;
+      font-weight:700; font-size:1.05rem;
       letter-spacing:0.08em; text-transform:uppercase;
-      margin-bottom:14px; color:#222;
+      margin-bottom:12px; color:#222;
     }
 
     .form-row {
       display:flex; flex-direction:column;
       gap:6px; margin-bottom:10px;
     }
-    .form-label { font-size:0.85rem; color:#444; }
+    .form-label { font-size:0.82rem; color:#444; }
     .form-input, .form-select {
       width:100%;
-      padding:10px 12px;
+      padding:9px 11px;
       border-radius:6px;
       border:1px solid #d6d3ce;
-      font-size:0.95rem;
+      font-size:0.92rem;
     }
     .form-input::placeholder { color:#a5a29b; }
 
-    .form-help { font-size:0.8rem; color:#777; margin-top:2px; }
-    .form-status { font-size:0.8rem; color:#777; margin-top:8px; min-height:1.2em; }
+    .form-help {
+      font-size:0.78rem;
+      color:#777;
+      margin-top:2px;
+    }
+    .form-status {
+      font-size:0.8rem;
+      color:#777;
+      margin-top:8px;
+      min-height:1.2em;
+      text-align:center;
+    }
 
     @media(max-width:900px){
       nav{padding:0 24px;}
-      main{margin-top:96px;}
-      .bestel-layout{flex-direction:column;}
+      main{padding:84px 16px 32px;}
     }
   </style>
 </head>
@@ -147,14 +159,14 @@
   </nav>
 
   <main>
-    <div class="badge">Bestellen</div>
-    <h1>Bestel jouw <span>fan-versie shirt 2026</span></h1>
-    <p class="intro">
-      Vul hieronder je gegevens in. Na je bestelling ontvang je van ons een betaalverzoek
-      en bevestiging via WhatsApp of e‑mail.
-    </p>
+    <div class="bestel-wrapper">
+      <div class="badge">Bestellen</div>
+      <h1>Bestel jouw <span>fan-versie shirt 2026</span></h1>
+      <p class="intro">
+        Vul hieronder je gegevens in. Na je bestelling ontvang je van ons een betaalverzoek
+        en bevestiging via WhatsApp of e‑mail.
+      </p>
 
-    <div class="bestel-layout">
       <div class="bestel-card">
         <div class="bestel-card-title">Bestelformulier</div>
 
@@ -189,9 +201,7 @@
 
           <p class="form-help">Prijs per fan-versie shirt: €24,99 – na het versturen betaal je veilig via Tikkie.</p>
 
-          <input type="hidden" name="_subject" value="Nieuwe bestelling fan-versie shirt 2026">
-
-          <button type="submit" class="btn-primary" style="width:100%; text-align:center; margin-top:10px;">
+          <button type="submit" class="btn-primary" style="width:100%; text-align:center; margin-top:12px;">
             Verstuur bestelling & betaal
           </button>
 
